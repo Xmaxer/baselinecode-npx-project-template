@@ -28,6 +28,10 @@ const zipPath = path.join(projectDir, 'template.zip');
 const packageJsonPath = path.join(projectDir, 'package.json');
 
 function getDownloadedFilePath(fileName: string): string {
+  if (!templateZippedPath) {
+    return fileName;
+  }
+
   return fileName.replace(templateZippedPath, '');
 }
 
