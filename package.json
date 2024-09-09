@@ -9,7 +9,7 @@
   "repository": {
     "url": "projectUrl"
   },
-  "license": "ISC",
+  "license": "MIT",
   "author": "Kevin Jakubauskas",
   "type": "commonjs",
   "bin": {
