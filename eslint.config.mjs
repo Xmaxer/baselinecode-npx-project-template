@@ -43,6 +43,12 @@ export default [
       '@typescript-eslint/ban-types': 'off',
       '@typescript-eslint/no-unused-vars': 'off',
       '@typescript-eslint/no-require-imports': 'off',
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: ['.*'],
+        },
+      ],
     },
   },
 ];
