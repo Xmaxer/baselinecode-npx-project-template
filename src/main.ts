@@ -106,8 +106,18 @@ function getDownloadedFilePath(fileName: string): string {
 
   fs.writeFileSync(packageJsonPath, JSON.stringify(newPackageJson, null, 2));
 
-  spawn.sync('npm', ['install'], { stdio: 'inherit', cwd: projectDir });
-  spawn.sync('git', ['init'], { stdio: 'inherit', cwd: projectDir });
+  const runInDirectory = (...commands: Array<string>) => {
+    spawn.sync(commands[0], commands.slice(1), {
+      stdio: 'inherit',
+      cwd: projectDir,
+    });
+  };
+
+  runInDirectory('git', 'init');
+  runInDirectory('npm', 'install');
+  runInDirectory('npm', 'run', 'prettier');
+  runInDirectory('git', 'add', '.');
+  runInDirectory('git', 'commit', '-m', '"Initial commit"');
 
   console.log(`Project created in ${projectDir}`);
 })().then(() => {
