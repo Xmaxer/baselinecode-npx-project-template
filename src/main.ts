@@ -11,7 +11,6 @@ import yauzl from 'yauzl';
 import config from '@src/config.json';
 
 const templateUrl = config.templateUrl;
-const templateZippedPath = config.pathToRemove;
 
 const program = new Command();
 
@@ -28,11 +27,7 @@ const zipPath = path.join(projectDir, 'template.zip');
 const packageJsonPath = path.join(projectDir, 'package.json');
 
 function getDownloadedFilePath(fileName: string): string {
-  if (!templateZippedPath) {
-    return fileName;
-  }
-
-  return fileName.replace(templateZippedPath, '');
+  return fileName.slice(fileName.indexOf('/'));
 }
 
 (async () => {
