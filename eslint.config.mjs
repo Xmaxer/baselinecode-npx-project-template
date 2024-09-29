@@ -49,6 +49,7 @@ export default [
           patterns: ['.*'],
         },
       ],
+      '@typescript-eslint/no-empty-object-type': 'off',
     },
   },
 ];
